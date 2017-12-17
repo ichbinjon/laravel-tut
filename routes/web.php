@@ -12,5 +12,34 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$name = 'Jonathan';
+	$tasks = [
+		'Go to the store',
+		'Party',
+		'Go hard',
+		'Go home'
+	];
+
+    return view('welcome',compact('name','tasks'));
 });
+
+// Laravel Query Builder
+
+Route::get('/tasks',function(){
+	$tasks = DB::table('tasks')->get();
+
+	return view('tasks.index',compact('tasks'));
+
+});
+
+Route::get('/tasks/{task}',function($id){
+
+	$task = DB::table('tasks')->find($id);
+
+	//dd($task);
+
+	return view('tasks.show',compact('task'));
+
+});
+
+//Eloquent Models

@@ -5,10 +5,12 @@
     <title>Hello World</title>
 </head>
 <body>
-    <h1>Hello {{ $name }} </h1>
+    <h1>Your Tasks Today</h1>
     <ul>
         @foreach ($tasks as $task)
-            <li>{{ $task }}</li>
+
+            <li> <a href="{{ $task->id }}">{{ $task->body }}</a></li>
+            
         @endforeach
 
 </body>
